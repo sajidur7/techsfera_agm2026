@@ -1,0 +1,1324 @@
+/* ==========================================================================
+   TECHSFERA AGM 2026 — 099 SUPPLY STYLE SPECIFICATION
+   Gallery Wall / Museum Grid Architecture
+   Colors: Cream Canvas (#F4EDD4), Ink (#280902), Accent Orange (#F84620)
+   Typography: Duplet & Space Grotesk / Monospace
+   Radii: 8px Cards, 9999px Pills, 0px Badges | Elevation: Zero Shadows, 1px Hairlines
+   ========================================================================== */
+
+/* Font Definitions (Duplet) */
+@font-face {
+  font-family: 'Duplet';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('fonts/Duplet-Light-BF642a34063c321.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Duplet';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/Duplet-Regular-BF642a340663b06.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Duplet';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/Duplet-Semibold-BF642a34066f658.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Duplet';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('fonts/Duplet-Bold-BF642a3406582e7.otf') format('opentype');
+}
+
+:root {
+  /* 099 Supply Color Tokens Adapted to TechSfera Palette */
+  --color-canvas-cream: #F4EDD4;
+  --color-card-surface: #F4EDD4;
+  --color-ink: #280902;
+  --color-ink-rgb: 40, 9, 2;
+  --color-orange: #F84620;
+
+  /* Muted & Hairline Grays derived from Ink */
+  --color-muted-hard: #280902;
+  --color-muted: rgba(40, 9, 2, 0.68);
+  --color-muted-soft: rgba(40, 9, 2, 0.44);
+  --color-border-subtle: rgba(40, 9, 2, 0.12);
+  --color-border-soft: rgba(40, 9, 2, 0.22);
+  --color-border-strong: rgba(40, 9, 2, 0.85);
+
+  /* Typography Stacks */
+  --font-display: 'Duplet', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Duplet', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* 099 Supply Type Scale */
+  --text-caption: 10px;
+  --leading-caption: 1.2;
+  --tracking-caption: 0.08em;
+
+  --text-micro: 11px;
+  --leading-micro: 1.2;
+
+  --text-badge: 12px;
+  --leading-badge: 1.2;
+  --tracking-badge: 0.08em;
+
+  --text-label: 22px;
+  --leading-label: 1.2;
+  --tracking-label: 0.16em;
+
+  --text-display: clamp(2.8rem, 5.2vw, 5.4rem);
+  --leading-display: 1.02;
+  --tracking-display: -0.028em;
+
+  /* 099 Supply Fixed Radii Vocabulary */
+  --radius-cards: 8px;
+  --radius-badges: 0px;
+  --radius-inputs: 4px;
+  --radius-buttons: 9999px;
+
+  /* Layout Spacing */
+  --header-height: 56px;
+  --footer-height: 52px;
+  --slide-padding-x: clamp(2rem, 5vw, 5.5rem);
+  --slide-padding-y: clamp(1.2rem, 3.5vh, 2.5rem);
+
+  /* Minimal 099 Motion Transitions */
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+  --trans-fast: 0.18s ease;
+  --trans-slide: 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base Foundation */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--color-canvas-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  user-select: none;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   HUD HEADER & FOOTER — 099 MUSEUM CATALOG CHROME
+   ========================================================================== */
+
+.presentation-hud {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Top Museum Header */
+.hud-header {
+  height: var(--header-height);
+  padding: 0 var(--slide-padding-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: auto;
+  border-bottom: 1px solid var(--color-border-subtle);
+  background: var(--color-canvas-cream);
+}
+
+.hud-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.hud-logo-img {
+  height: 20px;
+  width: auto;
+  display: block;
+}
+
+.hud-divider {
+  width: 1px;
+  height: 14px;
+  background-color: var(--color-border-soft);
+}
+
+.hud-tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  font-weight: 400;
+  letter-spacing: var(--tracking-badge);
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* Center Curator Label */
+.hud-center {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-buttons);
+}
+
+.hud-status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--color-orange);
+}
+
+.hud-status-text {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  letter-spacing: 0.14em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+/* Right Controls (Pill radius, hairline border) */
+.hud-controls-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hud-btn {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  font-weight: 400;
+  letter-spacing: var(--tracking-badge);
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: var(--radius-buttons);
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-muted);
+  transition: var(--trans-fast);
+}
+
+.hud-btn:hover {
+  border-color: var(--color-ink);
+  color: var(--color-ink);
+  background: rgba(40, 9, 2, 0.04);
+}
+
+.hud-timer {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  letter-spacing: 0.08em;
+  padding: 5px 12px;
+  border-radius: var(--radius-buttons);
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: var(--trans-fast);
+}
+
+.hud-timer:hover {
+  border-color: var(--color-ink);
+  color: var(--color-ink);
+}
+
+.hud-timer-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-orange);
+}
+
+/* Bottom Navigation Bar: "01 / 08 · ← → · Esc to overview" */
+.hud-footer {
+  height: var(--footer-height);
+  padding: 0 var(--slide-padding-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: auto;
+  border-top: 1px solid var(--color-border-subtle);
+  background: var(--color-canvas-cream);
+  position: relative;
+}
+
+.footer-meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-badge);
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.footer-nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--color-canvas-cream);
+  border: 1px solid var(--color-border-subtle);
+  padding: 6px 16px;
+  border-radius: var(--radius-buttons);
+}
+
+.nav-counter {
+  font-family: var(--font-mono);
+  font-size: var(--text-badge);
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-counter-current {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.nav-counter-sep {
+  color: var(--color-muted-soft);
+}
+
+.nav-counter-total {
+  color: var(--color-muted);
+}
+
+.nav-dot-sep {
+  color: var(--color-border-soft);
+}
+
+.nav-arrows {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-arrow-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-buttons);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  border: 1px solid transparent;
+  color: var(--color-ink);
+  transition: var(--trans-fast);
+}
+
+.nav-arrow-btn:hover:not(:disabled) {
+  border-color: var(--color-ink);
+  background: rgba(40, 9, 2, 0.05);
+}
+
+.nav-arrow-btn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.nav-hint {
+  border-left: 1px solid var(--color-border-subtle);
+  padding-left: 12px;
+}
+
+.footer-btn {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-badge);
+  text-transform: uppercase;
+  color: var(--color-muted);
+  transition: var(--trans-fast);
+}
+
+.footer-btn:hover {
+  color: var(--color-ink);
+}
+
+/* Hairline Progress Bar */
+.presentation-progress-track {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-border-subtle);
+}
+
+.presentation-progress-bar {
+  height: 100%;
+  width: 12.5%;
+  background-color: var(--color-orange);
+  transition: width var(--trans-slide);
+}
+
+/* ==========================================================================
+   HORIZONTAL SLIDE VIEWPORT & TRACK
+   ========================================================================== */
+
+.presentation-viewport {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-canvas-cream);
+}
+
+.presentation-track {
+  display: flex;
+  height: 100vh;
+  width: 800vw;
+  transform: translateX(0vw);
+  transition: transform var(--trans-slide);
+  will-change: transform;
+}
+
+.slide {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  position: relative;
+  padding: calc(var(--header-height) + 1.2rem) var(--slide-padding-x) calc(var(--footer-height) + 1.2rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--color-canvas-cream);
+  color: var(--color-ink);
+}
+
+.slide-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 1680px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   099 SUPPLY TYPOGRAPHY & SPECIMEN TAGS
+   ========================================================================== */
+
+/* Section Heading (099 Spec: Soehne Mono 26px weight 500, uppercase, letter-spacing 0.18em) */
+.specimen-section-heading {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-muted-soft);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.specimen-section-heading::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-orange);
+}
+
+/* Primary Display Headings (Duplet, clean geometric, minimal, non-fancy) */
+.display-title {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  font-weight: 600;
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  color: var(--color-ink);
+}
+
+.hero-subtext {
+  font-family: var(--font-body);
+  font-size: clamp(1.15rem, 1.6vw, 1.85rem);
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--color-muted);
+  max-width: 52ch;
+}
+
+/* Accent Text */
+.text-orange {
+  color: var(--color-orange);
+}
+
+/* Footer Specimen Strip */
+.slide-foot-meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-badge);
+  text-transform: uppercase;
+  color: var(--color-muted-soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--color-border-subtle);
+  padding-top: 0.8rem;
+}
+
+/* Slide Transition Animations (Subtle & Fast) */
+.slide .anim-fade-up {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.slide.active .anim-fade-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide.active .delay-1 { transition-delay: 0.05s; }
+.slide.active .delay-2 { transition-delay: 0.1s; }
+.slide.active .delay-3 { transition-delay: 0.15s; }
+.slide.active .delay-4 { transition-delay: 0.2s; }
+
+/* ==========================================================================
+   099 SUPPLY MOCKUP / COMPONENT TILE CARD
+   8px radius, 1px solid border, top silhouette, 1px divider, metadata strip
+   ========================================================================== */
+
+.museum-tile {
+  background: var(--color-card-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-cards);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--trans-fast), background-color var(--trans-fast);
+}
+
+.museum-tile:hover {
+  border-color: var(--color-border-soft);
+}
+
+/* Top Plinth / Asset Area */
+.museum-tile-body {
+  padding: 1.4rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Horizontal 1px Divider */
+.museum-tile-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-border-subtle);
+}
+
+/* Bottom Metadata Strip (099 Supply pattern: asset ID left, name right) */
+.museum-tile-footer {
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--tracking-badge);
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.tile-id {
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.tile-name {
+  color: var(--color-muted);
+}
+
+/* ==========================================================================
+   SLIDE 01 — INTRO (Museum Specimen Layout)
+   ========================================================================== */
+
+.slide-01-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3rem;
+  align-items: center;
+  height: 100%;
+}
+
+.intro-content-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.intro-identity-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: var(--text-badge);
+  letter-spacing: var(--tracking-badge);
+  text-transform: uppercase;
+}
+
+.role-badge-solid {
+  background: var(--color-ink);
+  color: var(--color-canvas-cream);
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  padding: 4px 8px;
+  border-radius: var(--radius-badges);
+  letter-spacing: 0.12em;
+}
+
+/* Intro Specimen Plinth */
+.intro-plinth-card {
+  height: clamp(260px, 34vh, 380px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-cards);
+  background: var(--color-card-surface);
+}
+
+.intro-plinth-canvas {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.intro-starburst-svg {
+  width: 90px;
+  height: 90px;
+}
+
+.plinth-grid-marks {
+  position: absolute;
+  inset: 20px;
+  border: 1px dashed var(--color-border-subtle);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   SLIDE 02 — WHAT I ACTUALLY WORKED ON (4 Bold Project Showcase)
+   ========================================================================== */
+
+.work-range-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  height: 52vh;
+  min-height: 320px;
+  margin: 1.6rem 0 1.2rem;
+}
+
+.work-project-card {
+  background: var(--color-card-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-cards);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  transition: border-color var(--trans-fast), background var(--trans-fast);
+}
+
+.work-project-card:hover {
+  border-color: var(--color-ink);
+}
+
+.work-project-body {
+  padding: 1.8rem 1.4rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.work-project-tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: 0.14em;
+  color: var(--color-orange);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* Project names MUCH BIGGER than descriptions */
+.work-project-name {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 3.4vw, 4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--color-ink);
+  margin-bottom: 6px;
+}
+
+.work-project-desc {
+  font-family: var(--font-mono);
+  font-size: clamp(0.78rem, 0.9vw, 0.95rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: auto;
+}
+
+.work-specimen-wire {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.2rem;
+}
+
+.work-specimen-wire svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ==========================================================================
+   SLIDE 03 — MY ROLE EVOLVED (From UI → Product Thinking)
+   ========================================================================== */
+
+.role-evolution-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 1.1fr;
+  gap: 3.5rem;
+  align-items: center;
+  height: 56vh;
+  margin: 1.4rem 0;
+}
+
+.role-evolution-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.evolution-transition-badge {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  padding: 5px 12px;
+  border: 1px solid var(--color-orange);
+  border-radius: var(--radius-buttons);
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  color: var(--color-orange);
+}
+
+.evolution-hero-quote {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 3.4vw, 3.8rem);
+  font-weight: 600;
+  line-height: 1.14;
+  letter-spacing: -0.025em;
+  color: var(--color-muted);
+}
+
+.evolution-hero-quote span {
+  color: var(--color-ink);
+  font-weight: 700;
+  display: block;
+  margin-top: 0.4rem;
+}
+
+.evolution-accent-bar {
+  width: 54px;
+  height: 3px;
+  background: var(--color-orange);
+  border-radius: 2px;
+  margin-top: 0.5rem;
+}
+
+.evolution-statements-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.statement-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 1.1rem 1.4rem;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-cards);
+  background: rgba(244, 237, 212, 0.4);
+  transition: border-color var(--trans-fast), background var(--trans-fast);
+}
+
+.statement-item:hover {
+  border-color: var(--color-ink);
+  background: rgba(40, 9, 2, 0.03);
+}
+
+.statement-num {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: 0.12em;
+  color: var(--color-orange);
+  font-weight: 600;
+  padding-top: 2px;
+}
+
+.statement-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 1.4vw, 1.55rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  margin-bottom: 3px;
+}
+
+.statement-sub {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.1vw, 1.15rem);
+  line-height: 1.35;
+  color: var(--color-muted);
+}
+
+/* ==========================================================================
+   SLIDE 04 — WHAT THIS YEAR TAUGHT ME (4 Reflective Pillars)
+   ========================================================================== */
+
+.lessons-reflection-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  height: 52vh;
+  min-height: 310px;
+  margin: 1.6rem 0;
+}
+
+.lesson-panel {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-cards);
+  padding: 2rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--color-card-surface);
+  transition: border-color var(--trans-fast);
+}
+
+.lesson-panel:hover {
+  border-color: var(--color-ink);
+}
+
+.lesson-num {
+  font-family: var(--font-mono);
+  font-size: var(--text-badge);
+  letter-spacing: 0.14em;
+  color: var(--color-orange);
+  font-weight: 600;
+}
+
+.lesson-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  line-height: 1.05;
+  margin: 1rem 0 0.8rem;
+}
+
+.lesson-statement {
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.35vw, 1.45rem);
+  line-height: 1.35;
+  color: var(--color-muted);
+  margin-top: auto;
+}
+
+/* ==========================================================================
+   SLIDE 05 — TECHSFERA REBRAND
+   ========================================================================== */
+
+.rebrand-museum-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3rem;
+  align-items: center;
+  height: 100%;
+}
+
+.rebrand-linear-flow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 1.4rem 0;
+}
+
+.flow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-buttons);
+  font-family: var(--font-mono);
+  font-size: var(--text-badge);
+  letter-spacing: var(--tracking-badge);
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.flow-pill-step {
+  color: var(--color-orange);
+  font-weight: 600;
+}
+
+.flow-pill--active {
+  background: var(--color-ink);
+  color: var(--color-canvas-cream);
+  border-color: var(--color-ink);
+}
+
+.flow-pill--active .flow-pill-step {
+  color: var(--color-canvas-cream);
+}
+
+.flow-arrow {
+  color: var(--color-orange);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.rebrand-tagline-callout {
+  padding-left: 14px;
+  border-left: 3px solid var(--color-ink);
+  margin-top: 1.6rem;
+}
+
+.tagline-core {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.3vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+}
+
+.tagline-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-badge);
+  text-transform: uppercase;
+  color: var(--color-muted-soft);
+  margin-top: 4px;
+}
+
+.brand-palette-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-badge);
+  text-transform: uppercase;
+  color: var(--color-muted-soft);
+}
+
+/* Right Specimen Cards */
+.rebrand-specimen-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Swatch Row (Strict 3 brand colors) */
+.swatch-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.swatch-item {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-inputs);
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+}
+
+.swatch-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-bottom: 4px;
+}
+
+/* ==========================================================================
+   SLIDE 06 — PERSONAL GROWTH / MINDSET (High-Impact Typographic)
+   ========================================================================== */
+
+.mindset-typographic-stage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 56vh;
+  max-width: 1250px;
+  margin: auto 0;
+  gap: 1.4rem;
+}
+
+.mindset-question-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mindset-sublabel {
+  font-family: var(--font-mono);
+  font-size: var(--text-badge);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted-soft);
+  font-weight: 500;
+}
+
+.mindset-sublabel--accent {
+  color: var(--color-orange);
+  font-weight: 600;
+}
+
+.mindset-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--color-muted);
+}
+
+.mindset-quote--hero {
+  font-size: clamp(2.4rem, 4.2vw, 4.8rem);
+  font-weight: 700;
+  color: var(--color-ink);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.mindset-divider-arrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0.2rem 0;
+}
+
+.mindset-arrow-line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-border-subtle);
+}
+
+.mindset-shift-tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  color: var(--color-orange);
+}
+
+.mindset-impact-note {
+  font-family: var(--font-body);
+  font-size: clamp(1.2rem, 1.6vw, 1.85rem);
+  line-height: 1.35;
+  color: var(--color-muted);
+  max-width: 60ch;
+  margin-top: 0.8rem;
+  padding-left: 14px;
+  border-left: 2px solid var(--color-orange);
+}
+
+/* ==========================================================================
+   SLIDE 07 — WHERE I WANT TO GO NEXT (Agentic Progression Track)
+   ========================================================================== */
+
+.next-year-subhead {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-badge);
+  font-weight: 600;
+  color: var(--color-orange);
+  text-transform: uppercase;
+}
+
+.agentic-pipeline-track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 2rem 0 1.6rem;
+  width: 100%;
+}
+
+.agentic-pipeline-step {
+  flex: 1;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-cards);
+  padding: 1.5rem 1.2rem;
+  background: var(--color-card-surface);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: border-color var(--trans-fast);
+}
+
+.agentic-pipeline-step:hover {
+  border-color: var(--color-ink);
+}
+
+.agentic-pipeline-step--focus {
+  border-color: var(--color-ink);
+  background: rgba(40, 9, 2, 0.03);
+}
+
+.pipeline-step-num {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: 0.12em;
+  color: var(--color-orange);
+  font-weight: 600;
+}
+
+.pipeline-step-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 1.8vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+}
+
+.pipeline-step-sub {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: 0.06em;
+  color: var(--color-muted);
+  text-transform: uppercase;
+}
+
+.pipeline-connector {
+  font-size: 1.3rem;
+  color: var(--color-orange);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.agentic-grounded-note {
+  padding-left: 14px;
+  border-left: 2px solid var(--color-ink);
+  margin-top: 1rem;
+}
+
+.grounded-quote {
+  font-family: var(--font-body);
+  font-size: clamp(1.15rem, 1.5vw, 1.7rem);
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.closing-thank-you {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4vw, 4.4rem);
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+/* ==========================================================================
+   SLIDE 08 — END
+   ========================================================================== */
+
+.slide-08-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3rem;
+  align-items: center;
+  height: 100%;
+}
+
+.closing-statement-box {
+  padding-left: 1.2rem;
+  border-left: 2px solid var(--color-ink);
+  font-family: var(--font-body);
+  font-size: clamp(1.2rem, 1.8vw, 2.2rem);
+  color: var(--color-muted);
+  line-height: 1.35;
+}
+
+/* ==========================================================================
+   OVERVIEW MODAL (Museum Contact Sheet)
+   ========================================================================== */
+
+.overview-modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(244, 237, 212, 0.96);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--trans-fast);
+  padding: 2.5rem var(--slide-padding-x);
+}
+
+.overview-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.overview-title {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-muted-soft);
+}
+
+.overview-close-btn {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-badge);
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-buttons);
+  color: var(--color-ink);
+  transition: var(--trans-fast);
+}
+
+.overview-close-btn:hover {
+  background: var(--color-ink);
+  color: var(--color-canvas-cream);
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  overflow-y: auto;
+}
+
+.overview-card {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-cards);
+  background: var(--color-card-surface);
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 160px;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color var(--trans-fast);
+}
+
+.overview-card:hover {
+  border-color: var(--color-ink);
+}
+
+.overview-card.active-card {
+  border: 2px solid var(--color-ink);
+}
+
+.overview-card-num {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--tracking-badge);
+  color: var(--color-orange);
+}
+
+.overview-card-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.overview-card-sub {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  color: var(--color-muted);
+  letter-spacing: var(--tracking-badge);
+  text-transform: uppercase;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1100px) {
+  .work-range-grid,
+  .lessons-reflection-grid {
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+  }
+  .role-evolution-layout,
+  .slide-01-grid,
+  .rebrand-museum-layout,
+  .slide-08-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    height: auto;
+  }
+  .agentic-pipeline-track {
+    flex-wrap: wrap;
+  }
+  .pipeline-connector {
+    display: none;
+  }
+  .overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

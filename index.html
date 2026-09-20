@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shimul — AGM 2026 Performance Review | TechSfera</title>
+  <meta name="description" content="AGM 2026 Product & Experience Design performance review presentation by Shimul at TechSfera. Products, systems, and a new direction.">
+
+  <!-- Google Fonts for Monospace Specimen Labels -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="logo/logo-mark.svg">
+</head>
+<body>
+
+  <!-- ========================================================================
+       099 SUPPLY MUSEUM HUD
+       White/Cream Gallery Chrome · Zero Shadows · 1px Hairlines
+       ======================================================================== -->
+  <div class="presentation-hud" id="presentationHud">
+    
+    <!-- Top Header -->
+    <header class="hud-header">
+      <div class="hud-brand">
+        <img src="logo/logo 2.svg" alt="TechSfera" class="hud-logo-img">
+        <span class="hud-divider"></span>
+        <span class="hud-tag">AGM 2026 // DESIGN REVIEW</span>
+      </div>
+
+      <!-- Center Status Label -->
+      <div class="hud-center">
+        <span class="hud-status-dot"></span>
+        <span class="hud-status-text">SHIMUL · PRODUCT & EXPERIENCE DESIGNER</span>
+      </div>
+
+      <!-- Right Controls -->
+      <div class="hud-controls-right">
+        <!-- Pacing Helper Timer (Target: 2-3 mins) -->
+        <button class="hud-timer" id="hudTimerBtn" title="Presenter Timer (2–3 mins). Click to toggle.">
+          <span class="hud-timer-dot"></span>
+          <span id="hudTimerDisplay">00:00 / 03:00</span>
+        </button>
+
+        <button class="hud-btn" id="fullscreenBtn" title="Toggle fullscreen presentation mode">
+          FULL
+        </button>
+      </div>
+    </header>
+
+    <!-- Bottom Navigation Bar: "01 / 08 · ← → · Esc to overview" -->
+    <footer class="hud-footer">
+      <div class="footer-meta">
+        TECHSFERA // ANNUAL REVIEW 2026
+      </div>
+
+      <nav class="footer-nav" aria-label="Presentation Navigation">
+        <div class="nav-counter">
+          <span class="nav-counter-current" id="navCurrentNum">01</span>
+          <span class="nav-counter-sep">/</span>
+          <span class="nav-counter-total" id="navTotalNum">08</span>
+        </div>
+
+        <span class="nav-dot-sep">·</span>
+
+        <div class="nav-arrows">
+          <button class="nav-arrow-btn" id="prevSlideBtn" aria-label="Previous Slide" title="Previous (←)">
+            ←
+          </button>
+          <button class="nav-arrow-btn" id="nextSlideBtn" aria-label="Next Slide" title="Next (→ or Space)">
+            →
+          </button>
+        </div>
+
+        <div class="nav-hint">
+          <button class="footer-btn" id="navOverviewTrigger" title="Press Esc to view slide overview">
+            Esc to overview
+          </button>
+        </div>
+      </nav>
+
+      <div class="footer-meta">
+        PRESS SPACE OR ARROWS
+      </div>
+
+      <!-- Continuous Hairline Progress Track -->
+      <div class="presentation-progress-track">
+        <div class="presentation-progress-bar" id="progressBar"></div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ========================================================================
+       HORIZONTAL PRESENTATION TRACK (8 Slides on Gallery Canvas)
+       ======================================================================== -->
+  <main class="presentation-viewport">
+    <div class="presentation-track" id="presentationTrack">
+
+      <!-- ====================================================================
+           SLIDE 01 — INTRO (Preserved Visual Character)
+           My Year at TechSfera
+           Shimul · Product & Experience Designer · 2026
+           Products, systems, and a new direction.
+           ==================================================================== -->
+      <section class="slide active" id="slide-1" data-index="0">
+        <div class="slide-inner">
+          <div class="specimen-section-heading anim-fade-up">01 // INTRO</div>
+
+          <div class="slide-01-grid">
+            <div class="intro-content-col">
+              <h1 class="display-title anim-fade-up delay-1">
+                My Year at<br>
+                TechSfera
+              </h1>
+
+              <div class="intro-identity-tag anim-fade-up delay-2">
+                <span style="font-size: 1.25rem; font-weight: 600; color: var(--color-ink);">Shimul</span>
+                <span class="role-badge-solid">PRODUCT & EXPERIENCE DESIGNER</span>
+                <span style="color: var(--color-muted-soft);">2026</span>
+              </div>
+
+              <p class="hero-subtext anim-fade-up delay-3">
+                Products, systems, and a new direction.
+              </p>
+            </div>
+
+            <!-- 099 Plinth Card: TechSfera Mark Specimen -->
+            <div class="intro-plinth-card anim-fade-up delay-2">
+              <div class="intro-plinth-canvas">
+                <div class="plinth-grid-marks"></div>
+                <img src="logo/logo-mark.svg" alt="TechSfera Mark" class="intro-starburst-svg">
+              </div>
+              <div class="museum-tile-divider"></div>
+              <div class="museum-tile-footer">
+                <span class="tile-id">BRAND MARK</span>
+                <span class="tile-name">TECHSFERA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide-foot-meta anim-fade-up delay-4">
+            <span>AGM 2026 // ANNUAL REVIEW</span>
+            <span>SHIMUL · PRODUCT & EXPERIENCE DESIGNER</span>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ====================================================================
+           SLIDE 02 — WHAT I ACTUALLY WORKED ON
+           I spent the year working on products that solve very different problems.
+           POS · OfixChat · ScrollDate · Voimeet
+           ==================================================================== -->
+      <section class="slide" id="slide-2" data-index="1">
+        <div class="slide-inner">
+          <div>
+            <div class="specimen-section-heading anim-fade-up">02 // EVIDENCE</div>
+            <h2 class="display-title anim-fade-up delay-1">What I Actually Worked On</h2>
+            <p class="hero-subtext anim-fade-up delay-2" style="margin-top: 8px;">
+              I spent the year working on products that solve very different problems.
+            </p>
+          </div>
+
+          <!-- 4 Project Columns with Large Typography -->
+          <div class="work-range-grid anim-fade-up delay-3">
+
+            <!-- 1. POS -->
+            <div class="work-project-card">
+              <div class="work-project-body">
+                <div class="work-project-tag">01 // OPERATIONS</div>
+                <h3 class="work-project-name">POS</h3>
+                <p class="work-project-desc">Business operations</p>
+                
+                <div class="work-specimen-wire">
+                  <svg viewBox="0 0 180 90" fill="none">
+                    <rect x="8" y="8" width="164" height="74" rx="4" stroke="#280902" stroke-width="1.2"/>
+                    <rect x="18" y="18" width="65" height="8" rx="2" fill="#280902"/>
+                    <rect x="18" y="32" width="50" height="5" rx="1.5" fill="#280902" fill-opacity="0.3"/>
+                    <rect x="18" y="42" width="60" height="5" rx="1.5" fill="#280902" fill-opacity="0.3"/>
+                    <rect x="18" y="60" width="65" height="12" rx="2" fill="#280902"/>
+                    <circle cx="112" cy="27" r="5" stroke="#280902" stroke-width="1.2"/>
+                    <circle cx="132" cy="27" r="5" stroke="#280902" stroke-width="1.2"/>
+                    <circle cx="152" cy="27" r="5" stroke="#280902" stroke-width="1.2"/>
+                    <circle cx="112" cy="45" r="5" stroke="#280902" stroke-width="1.2"/>
+                    <circle cx="132" cy="45" r="5" fill="#F84620"/>
+                    <circle cx="152" cy="45" r="5" stroke="#280902" stroke-width="1.2"/>
+                    <circle cx="112" cy="63" r="5" stroke="#280902" stroke-width="1.2"/>
+                    <circle cx="132" cy="63" r="5" stroke="#280902" stroke-width="1.2"/>
+                    <circle cx="152" cy="63" r="5" stroke="#280902" stroke-width="1.2"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="museum-tile-divider"></div>
+              <div class="museum-tile-footer">
+                <span class="tile-id">PROJ 01</span>
+                <span class="tile-name">COMMERCE & CHECKOUT</span>
+              </div>
+            </div>
+
+            <!-- 2. OfixChat -->
+            <div class="work-project-card">
+              <div class="work-project-body">
+                <div class="work-project-tag">02 // MESSAGING</div>
+                <h3 class="work-project-name">OfixChat</h3>
+                <p class="work-project-desc">Unified communication</p>
+                
+                <div class="work-specimen-wire">
+                  <svg viewBox="0 0 180 90" fill="none">
+                    <line x1="22" y1="12" x2="22" y2="78" stroke="#280902" stroke-width="1.2"/>
+                    <circle cx="22" cy="22" r="3.5" fill="#F84620"/>
+                    <circle cx="22" cy="42" r="3" stroke="#280902" stroke-width="1.2"/>
+                    <circle cx="22" cy="62" r="3" stroke="#280902" stroke-width="1.2"/>
+                    <rect x="38" y="16" width="75" height="14" rx="3" stroke="#280902" stroke-width="1.2"/>
+                    <rect x="38" y="38" width="90" height="16" rx="3" stroke="#280902" stroke-width="1.2"/>
+                    <rect x="62" y="60" width="95" height="16" rx="3" fill="#280902"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="museum-tile-divider"></div>
+              <div class="museum-tile-footer">
+                <span class="tile-id">PROJ 02</span>
+                <span class="tile-name">TEAM CHAT & THREADS</span>
+              </div>
+            </div>
+
+            <!-- 3. ScrollDate -->
+            <div class="work-project-card">
+              <div class="work-project-body">
+                <div class="work-project-tag">03 // DISCOVERY</div>
+                <h3 class="work-project-name">ScrollDate</h3>
+                <p class="work-project-desc">Social connection</p>
+                
+                <div class="work-specimen-wire">
+                  <svg viewBox="0 0 180 90" fill="none">
+                    <rect x="42" y="12" width="90" height="66" rx="5" stroke="#280902" stroke-opacity="0.35" stroke-width="1" transform="rotate(-4 87 45)"/>
+                    <rect x="44" y="12" width="90" height="66" rx="5" stroke="#280902" stroke-width="1.3"/>
+                    <circle cx="68" cy="38" r="10" stroke="#280902" stroke-width="1.2"/>
+                    <line x1="86" y1="32" x2="118" y2="32" stroke="#280902" stroke-width="2"/>
+                    <line x1="86" y1="42" x2="108" y2="42" stroke="#280902" stroke-opacity="0.4" stroke-width="2"/>
+                    <path d="M108 62 C 120 58, 130 52, 142 40" stroke="#F84620" stroke-width="1.5" stroke-dasharray="3 3"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="museum-tile-divider"></div>
+              <div class="museum-tile-footer">
+                <span class="tile-id">PROJ 03</span>
+                <span class="tile-name">SOCIAL CONNECTION</span>
+              </div>
+            </div>
+
+            <!-- 4. Voimeet -->
+            <div class="work-project-card">
+              <div class="work-project-body">
+                <div class="work-project-tag">04 // COLLABORATION</div>
+                <h3 class="work-project-name">Voimeet</h3>
+                <p class="work-project-desc">Video collaboration</p>
+                
+                <div class="work-specimen-wire">
+                  <svg viewBox="0 0 180 90" fill="none">
+                    <rect x="18" y="12" width="64" height="30" rx="3" stroke="#280902" stroke-width="1.3"/>
+                    <rect x="94" y="12" width="64" height="30" rx="3" stroke="#280902" stroke-opacity="0.35" stroke-width="1"/>
+                    <rect x="18" y="48" width="64" height="30" rx="3" stroke="#280902" stroke-opacity="0.35" stroke-width="1"/>
+                    <rect x="94" y="48" width="64" height="30" rx="3" stroke="#280902" stroke-opacity="0.35" stroke-width="1"/>
+                    <line x1="34" y1="27" x2="34" y2="27" stroke="#F84620" stroke-width="2"/>
+                    <line x1="40" y1="22" x2="40" y2="32" stroke="#F84620" stroke-width="2"/>
+                    <line x1="46" y1="18" x2="46" y2="36" stroke="#F84620" stroke-width="2"/>
+                    <line x1="52" y1="23" x2="52" y2="31" stroke="#F84620" stroke-width="2"/>
+                    <circle cx="72" cy="20" r="2" fill="#F84620"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="museum-tile-divider"></div>
+              <div class="museum-tile-footer">
+                <span class="tile-id">PROJ 04</span>
+                <span class="tile-name">VIDEO & AUDIO STAGE</span>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="slide-foot-meta anim-fade-up delay-4">
+            <span style="color: var(--color-ink); font-weight: 600;">EVIDENCE OF DIVERSE PRODUCT RANGE</span>
+            <span>4 PRODUCTION SYSTEMS</span>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ====================================================================
+           SLIDE 03 — MY ROLE EVOLVED
+           From UI → Product thinking
+           I started with the interface. I became more involved in the product.
+           ==================================================================== -->
+      <section class="slide" id="slide-3" data-index="2">
+        <div class="slide-inner">
+          <div>
+            <div class="specimen-section-heading anim-fade-up">03 // EVOLUTION</div>
+            <h2 class="display-title anim-fade-up delay-1">My Role Evolved</h2>
+          </div>
+
+          <div class="role-evolution-layout anim-fade-up delay-2">
+            <!-- Left Hero Statement Column -->
+            <div class="role-evolution-hero">
+              <div class="evolution-transition-badge">
+                FROM UI → PRODUCT THINKING
+              </div>
+              <div class="evolution-hero-quote">
+                I started with the interface.<br>
+                <span>I became more involved in the product.</span>
+              </div>
+              <div class="evolution-accent-bar"></div>
+            </div>
+
+            <!-- Right: 4 Structured Statements -->
+            <div class="evolution-statements-col">
+
+              <div class="statement-item">
+                <div class="statement-num">01</div>
+                <div class="statement-content">
+                  <h3 class="statement-headline">UNDERSTAND THE PROBLEM</h3>
+                  <p class="statement-sub">Not just the screen.</p>
+                </div>
+              </div>
+
+              <div class="statement-item">
+                <div class="statement-num">02</div>
+                <div class="statement-content">
+                  <h3 class="statement-headline">SHAPE THE EXPERIENCE</h3>
+                  <p class="statement-sub">Think through workflows and edge cases.</p>
+                </div>
+              </div>
+
+              <div class="statement-item">
+                <div class="statement-num">03</div>
+                <div class="statement-content">
+                  <h3 class="statement-headline">WORK WITH DEVELOPMENT</h3>
+                  <p class="statement-sub">Make decisions that survive implementation.</p>
+                </div>
+              </div>
+
+              <div class="statement-item">
+                <div class="statement-num">04</div>
+                <div class="statement-content">
+                  <h3 class="statement-headline">THINK BEYOND THE UI</h3>
+                  <p class="statement-sub">Look at the product as a system.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="slide-foot-meta anim-fade-up delay-4">
+            <span>ROLE EVOLUTION</span>
+            <span>SHIMUL // PRODUCT & EXPERIENCE DESIGNER</span>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ====================================================================
+           SLIDE 04 — WHAT THIS YEAR TAUGHT ME
+           Complexity · Ownership · Collaboration · Iteration
+           ==================================================================== -->
+      <section class="slide" id="slide-4" data-index="3">
+        <div class="slide-inner">
+          <div>
+            <div class="specimen-section-heading anim-fade-up">04 // REFLECTION</div>
+            <h2 class="display-title anim-fade-up delay-1">What This Year Taught Me</h2>
+            <p class="hero-subtext anim-fade-up delay-2" style="margin-top: 8px;">
+              Direct insights learned from real product challenges.
+            </p>
+          </div>
+
+          <!-- 4 Large Reflective Statement Pillars -->
+          <div class="lessons-reflection-grid anim-fade-up delay-3">
+
+            <div class="lesson-panel">
+              <div class="lesson-num">01</div>
+              <h3 class="lesson-title">COMPLEXITY</h3>
+              <p class="lesson-statement">Real products rarely have simple flows.</p>
+            </div>
+
+            <div class="lesson-panel">
+              <div class="lesson-num">02</div>
+              <h3 class="lesson-title">OWNERSHIP</h3>
+              <p class="lesson-statement">Good design means thinking beyond the assigned screen.</p>
+            </div>
+
+            <div class="lesson-panel">
+              <div class="lesson-num">03</div>
+              <h3 class="lesson-title">COLLABORATION</h3>
+              <p class="lesson-statement">The best decisions happen closer to design + development together.</p>
+            </div>
+
+            <div class="lesson-panel">
+              <div class="lesson-num">04</div>
+              <h3 class="lesson-title">ITERATION</h3>
+              <p class="lesson-statement">The first idea is rarely the final one.</p>
+            </div>
+
+          </div>
+
+          <div class="slide-foot-meta anim-fade-up delay-4">
+            <span>ANNUAL REFLECTION</span>
+            <span>GROUNDED EXPERIENCE</span>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ====================================================================
+           SLIDE 05 — TECHSFERA REBRAND
+           I ALSO HELPED SHAPE THE NEW TECHSFERA
+           I proposed the rebranding direction and helped carry it into the new website.
+           Position → Identity → Website
+           Complex workflows. Clear products.
+           ==================================================================== -->
+      <section class="slide" id="slide-5" data-index="4">
+        <div class="slide-inner">
+          <div class="specimen-section-heading anim-fade-up">05 // CONTRIBUTION</div>
+
+          <div class="rebrand-museum-layout">
+            <div>
+              <h2 class="display-title anim-fade-up delay-1">
+                I Also Helped Shape<br>
+                the New TechSfera
+              </h2>
+
+              <p class="hero-subtext anim-fade-up delay-2" style="margin: 1.2rem 0;">
+                I proposed the rebranding direction and helped carry it into the new website.
+              </p>
+
+              <!-- Sequence: Position -> Identity -> Website -->
+              <div class="rebrand-linear-flow anim-fade-up delay-3">
+                <div class="flow-pill">
+                  <span class="flow-pill-step">01</span>
+                  <span class="flow-pill-name">POSITION</span>
+                </div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-pill">
+                  <span class="flow-pill-step">02</span>
+                  <span class="flow-pill-name">IDENTITY</span>
+                </div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-pill flow-pill--active">
+                  <span class="flow-pill-step">03</span>
+                  <span class="flow-pill-name">WEBSITE</span>
+                </div>
+              </div>
+
+              <div class="rebrand-tagline-callout anim-fade-up delay-4">
+                <div class="tagline-core">
+                  Complex workflows. Clear products.
+                </div>
+                <div class="tagline-label">
+                  INTERNAL INITIATIVE PROPOSED & DELIVERED
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Visual Stack: Real Brand Assets -->
+            <div class="rebrand-specimen-stack anim-fade-up delay-3">
+              <!-- Tile 1: Brand Wordmark -->
+              <div class="museum-tile">
+                <div class="museum-tile-body" style="align-items: center; padding: 2.2rem;">
+                  <img src="logo/logo 2.svg" alt="TechSfera Brand System" style="width: 250px; height: auto;">
+                </div>
+                <div class="museum-tile-divider"></div>
+                <div class="museum-tile-footer">
+                  <span class="tile-id">IDENTITY</span>
+                  <span class="tile-name">OFFICIAL LOGOTYPE & MARQUE</span>
+                </div>
+              </div>
+
+              <!-- Tile 2: Strict Brand Colors -->
+              <div class="museum-tile">
+                <div class="museum-tile-body" style="padding: 1.4rem;">
+                  <div class="brand-palette-label">
+                    COLOR SYSTEM
+                  </div>
+                  <div class="swatch-row">
+                    <div class="swatch-item">
+                      <div class="swatch-dot" style="background: #F84620;"></div>
+                      <span style="font-weight: 600;">ORANGE</span>
+                      <span style="color: var(--color-muted-soft);">#F84620</span>
+                    </div>
+                    <div class="swatch-item">
+                      <div class="swatch-dot" style="background: #280902;"></div>
+                      <span style="font-weight: 600;">DARK</span>
+                      <span style="color: var(--color-muted-soft);">#280902</span>
+                    </div>
+                    <div class="swatch-item">
+                      <div class="swatch-dot" style="background: #F4EDD4; border: 1px solid #280902;"></div>
+                      <span style="font-weight: 600;">CREAM</span>
+                      <span style="color: var(--color-muted-soft);">#F4EDD4</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="museum-tile-divider"></div>
+                <div class="museum-tile-footer">
+                  <span class="tile-id">SURFACES</span>
+                  <span class="tile-name">BRAND & WEB FOUNDATIONS</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="slide-foot-meta anim-fade-up delay-4">
+            <span>INTERNAL CONTRIBUTION</span>
+            <span>PROPOSED & SHAPED BY SHIMUL</span>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ====================================================================
+           SLIDE 06 — PERSONAL GROWTH
+           THE BIGGEST CHANGE IN ME
+           I don't just ask: "How should this look?"
+           Now I ask: "Why does this need to work this way?"
+           ==================================================================== -->
+      <section class="slide" id="slide-6" data-index="5">
+        <div class="slide-inner">
+          <div>
+            <div class="specimen-section-heading anim-fade-up">06 // MINDSET</div>
+            <h2 class="display-title anim-fade-up delay-1">The Biggest Change in Me</h2>
+          </div>
+
+          <!-- Pure Typographic Impact Layout -->
+          <div class="mindset-typographic-stage anim-fade-up delay-2">
+            
+            <div class="mindset-question-block mindset-question--old">
+              <span class="mindset-sublabel">I DON'T JUST ASK</span>
+              <div class="mindset-quote">“How should this look?”</div>
+            </div>
+
+            <div class="mindset-divider-arrow">
+              <span class="mindset-arrow-line"></span>
+              <span class="mindset-shift-tag">THE CRITICAL SHIFT</span>
+              <span class="mindset-arrow-line"></span>
+            </div>
+
+            <div class="mindset-question-block mindset-question--new">
+              <span class="mindset-sublabel mindset-sublabel--accent">NOW I ASK</span>
+              <div class="mindset-quote mindset-quote--hero">“Why does this need to work this way?”</div>
+            </div>
+
+            <div class="mindset-impact-note anim-fade-up delay-3">
+              That shift changed how I approach products, workflows, systems and decisions.
+            </div>
+
+          </div>
+
+          <div class="slide-foot-meta anim-fade-up delay-4">
+            <span>MINDSET EVOLUTION</span>
+            <span>SHIMUL // AGM 2026</span>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ====================================================================
+           SLIDE 07 — NEXT YEAR
+           WHERE I WANT TO GO NEXT
+           Product Design × AI
+           I want to become an Agentic Product Designer.
+           THINK → DESIGN → PROTOTYPE → AUTOMATE → BUILD
+           ==================================================================== -->
+      <section class="slide" id="slide-7" data-index="6">
+        <div class="slide-inner">
+          <div>
+            <div class="specimen-section-heading anim-fade-up">07 // HORIZON</div>
+            <div class="next-year-subhead anim-fade-up delay-1">PRODUCT DESIGN × AI</div>
+            <h2 class="display-title anim-fade-up delay-2" style="margin-top: 6px;">
+              I want to become an<br>
+              <span class="text-orange">Agentic Product Designer.</span>
+            </h2>
+            <p class="hero-subtext anim-fade-up delay-3" style="margin-top: 10px; max-width: 58ch;">
+              Not just using AI to design faster — but learning how AI can change how products are designed and built.
+            </p>
+          </div>
+
+          <!-- 5-Step Simple Progression: THINK → DESIGN → PROTOTYPE → AUTOMATE → BUILD -->
+          <div class="agentic-pipeline-track anim-fade-up delay-3">
+            <div class="agentic-pipeline-step">
+              <div class="pipeline-step-num">01</div>
+              <div class="pipeline-step-name">THINK</div>
+              <div class="pipeline-step-sub">Problem & logic</div>
+            </div>
+
+            <div class="pipeline-connector">→</div>
+
+            <div class="agentic-pipeline-step">
+              <div class="pipeline-step-num">02</div>
+              <div class="pipeline-step-name">DESIGN</div>
+              <div class="pipeline-step-sub">User workflows</div>
+            </div>
+
+            <div class="pipeline-connector">→</div>
+
+            <div class="agentic-pipeline-step agentic-pipeline-step--focus">
+              <div class="pipeline-step-num">03</div>
+              <div class="pipeline-step-name">PROTOTYPE</div>
+              <div class="pipeline-step-sub">Interactive code</div>
+            </div>
+
+            <div class="pipeline-connector">→</div>
+
+            <div class="agentic-pipeline-step">
+              <div class="pipeline-step-num">04</div>
+              <div class="pipeline-step-name">AUTOMATE</div>
+              <div class="pipeline-step-sub">Agent workflows</div>
+            </div>
+
+            <div class="pipeline-connector">→</div>
+
+            <div class="agentic-pipeline-step">
+              <div class="pipeline-step-num">05</div>
+              <div class="pipeline-step-name">BUILD</div>
+              <div class="pipeline-step-sub">Real solutions</div>
+            </div>
+          </div>
+
+          <div class="agentic-grounded-note anim-fade-up delay-4">
+            <div class="grounded-quote">
+              My goal is to become more hands-on from product idea to working solution.
+            </div>
+          </div>
+
+          <div class="slide-foot-meta anim-fade-up delay-4">
+            <span>FORWARD HORIZON</span>
+            <span>AMBITION & CAPABILITY</span>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ====================================================================
+           SLIDE 08 — OUTRO (Preserved Visual Character)
+           Still building. Still learning.
+           Complex workflows. Clear products.
+           Thank you.
+           ==================================================================== -->
+      <section class="slide" id="slide-8" data-index="7">
+        <div class="slide-inner">
+          <div class="specimen-section-heading anim-fade-up">08 // OUTRO</div>
+
+          <div class="slide-08-grid">
+            <div style="display: flex; flex-direction: column; gap: 2rem;">
+              <h2 class="display-title anim-fade-up delay-1">
+                Still building.<br>
+                Still learning.
+              </h2>
+
+              <div class="closing-statement-box anim-fade-up delay-2">
+                Complex workflows.<br>
+                Clear products.
+              </div>
+
+              <div class="closing-thank-you anim-fade-up delay-3">
+                Thank you.
+              </div>
+            </div>
+
+            <!-- 099 Specimen Card: Closing Plinth -->
+            <div class="intro-plinth-card anim-fade-up delay-2">
+              <div class="intro-plinth-canvas">
+                <div class="plinth-grid-marks"></div>
+                <img src="logo/logo-mark.svg" alt="TechSfera Mark" class="intro-starburst-svg">
+              </div>
+              <div class="museum-tile-divider"></div>
+              <div class="museum-tile-footer">
+                <span class="tile-id">SHIMUL</span>
+                <span class="tile-name">PRODUCT & EXPERIENCE DESIGNER · TECHSFERA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide-foot-meta anim-fade-up delay-4">
+            <span>ANNUAL GENERAL MEETING 2026</span>
+            <span>TECHSFERA DESIGN REVIEW</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       099 OVERVIEW CONTACT SHEET (Esc to Open/Close)
+       ======================================================================== -->
+  <div class="overview-modal" id="overviewModal" aria-modal="true" role="dialog" aria-label="Slide Overview Contact Sheet">
+    <div class="overview-header">
+      <div class="overview-title">PRESENTATION OVERVIEW (8 SLIDES)</div>
+      <button class="overview-close-btn" id="overviewCloseBtn">
+        CLOSE [ESC]
+      </button>
+    </div>
+
+    <div class="overview-grid">
+      <!-- Card 1 -->
+      <button class="overview-card active-card" data-slide-index="0">
+        <span class="overview-card-num">01 // INTRO</span>
+        <span class="overview-card-title">My Year at TechSfera</span>
+        <span class="overview-card-sub">Shimul · Product & Experience Designer</span>
+      </button>
+
+      <!-- Card 2 -->
+      <button class="overview-card" data-slide-index="1">
+        <span class="overview-card-num">02 // EVIDENCE</span>
+        <span class="overview-card-title">What I Actually Worked On</span>
+        <span class="overview-card-sub">POS · OfixChat · ScrollDate · Voimeet</span>
+      </button>
+
+      <!-- Card 3 -->
+      <button class="overview-card" data-slide-index="2">
+        <span class="overview-card-num">03 // EVOLUTION</span>
+        <span class="overview-card-title">My Role Evolved</span>
+        <span class="overview-card-sub">From UI → Product Thinking</span>
+      </button>
+
+      <!-- Card 4 -->
+      <button class="overview-card" data-slide-index="3">
+        <span class="overview-card-num">04 // REFLECTION</span>
+        <span class="overview-card-title">What This Year Taught Me</span>
+        <span class="overview-card-sub">Complexity · Ownership · Collaboration</span>
+      </button>
+
+      <!-- Card 5 -->
+      <button class="overview-card" data-slide-index="4">
+        <span class="overview-card-num">05 // CONTRIBUTION</span>
+        <span class="overview-card-title">Shaping the New TechSfera</span>
+        <span class="overview-card-sub">Position → Identity → Website</span>
+      </button>
+
+      <!-- Card 6 -->
+      <button class="overview-card" data-slide-index="5">
+        <span class="overview-card-num">06 // MINDSET</span>
+        <span class="overview-card-title">The Biggest Change in Me</span>
+        <span class="overview-card-sub">Why Does This Need To Work This Way?</span>
+      </button>
+
+      <!-- Card 7 -->
+      <button class="overview-card" data-slide-index="6">
+        <span class="overview-card-num">07 // HORIZON</span>
+        <span class="overview-card-title">Where I Want to Go Next</span>
+        <span class="overview-card-sub">Agentic Product Designer</span>
+      </button>
+
+      <!-- Card 8 -->
+      <button class="overview-card" data-slide-index="7">
+        <span class="overview-card-num">08 // OUTRO</span>
+        <span class="overview-card-title">Still Building. Still Learning.</span>
+        <span class="overview-card-sub">Thank You</span>
+      </button>
+    </div>
+  </div>
+
+  <script src="presentation.js"></script>
+</body>
+</html>
