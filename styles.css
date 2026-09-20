@@ -1185,18 +1185,6 @@ button {
   flex-shrink: 0;
 }
 
-.agentic-grounded-note {
-  padding-left: 14px;
-  border-left: 2px solid var(--color-ink);
-  margin-top: 1rem;
-}
-
-.grounded-quote {
-  font-family: var(--font-body);
-  font-size: clamp(1.15rem, 1.5vw, 1.7rem);
-  font-weight: 500;
-  color: var(--color-ink);
-}
 
 .closing-thank-you {
   font-family: var(--font-display);
