@@ -396,15 +396,37 @@ button {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: clamp(1rem, 2.2vh, 2rem);
+  justify-content: flex-start;
+  padding-top: clamp(0.75rem, 2.2vh, 1.8rem);
+  gap: clamp(1rem, 2vh, 1.8rem);
   max-width: 100%;
   margin: 0;
 }
 
 /* ==========================================================================
-   099 SUPPLY TYPOGRAPHY & SPECIMEN TAGS
+   UNIFIED SLIDE HEADER ARCHITECTURE (Exact alignment on all 8 slides)
+   Top: [▪ 0X // CATEGORY] -> [Display Title] -> [Subtext]
    ========================================================================== */
+
+.slide-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.slide-header .specimen-section-heading {
+  margin: 0;
+}
+
+.slide-header .display-title {
+  margin: 0;
+}
+
+.slide-header .hero-subtext {
+  margin: 2px 0 0 0;
+}
 
 /* Section Heading (099 Spec: Soehne Mono 26px weight 500, uppercase, letter-spacing 0.18em) */
 .specimen-section-heading {
@@ -414,7 +436,7 @@ button {
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--color-muted-soft);
-  margin-bottom: 0.6rem;
+  margin: 0;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -546,10 +568,33 @@ button {
   min-height: 0;
 }
 
-.intro-content-col {
+.slide-01-stage {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3rem;
+  align-items: center;
+  flex: 1;
+  min-height: 0;
+}
+
+.intro-identity-card {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-cards);
+  background: var(--color-card-surface);
+  padding: 2.5rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  justify-content: center;
+  gap: 1.2rem;
+  height: clamp(260px, 34vh, 380px);
+}
+
+.intro-identity-meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-badge);
+  text-transform: uppercase;
+  color: var(--color-muted);
 }
 
 .intro-identity-tag {
@@ -618,7 +663,7 @@ button {
   gap: 14px;
   height: 52vh;
   min-height: 320px;
-  margin: 1.6rem 0 1.2rem;
+  margin: 0;
 }
 
 .work-project-card {
@@ -801,7 +846,7 @@ button {
   gap: 14px;
   height: 52vh;
   min-height: 310px;
-  margin: 1.6rem 0;
+  margin: 0;
 }
 
 .lesson-panel {
@@ -848,6 +893,15 @@ button {
 /* ==========================================================================
    SLIDE 05 — TECHSFERA REBRAND
    ========================================================================== */
+
+.rebrand-content-stage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  flex: 1;
+  min-height: 0;
+}
 
 .rebrand-museum-layout {
   display: grid;
@@ -1074,7 +1128,7 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  margin: 2rem 0 1.6rem;
+  margin: 0;
   width: 100%;
 }
 
@@ -1279,13 +1333,33 @@ button {
    SLIDE 09 — END
    ========================================================================== */
 
-.slide-08-grid {
+.slide-08-stage {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 3rem;
   align-items: center;
   flex: 1;
   min-height: 0;
+}
+
+.closing-thank-card {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-cards);
+  background: var(--color-card-surface);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  justify-content: center;
+  height: clamp(260px, 34vh, 380px);
+}
+
+.closing-role-tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-badge);
+  color: var(--color-orange);
+  text-transform: uppercase;
 }
 
 .closing-statement-box {
@@ -1450,10 +1524,12 @@ button,
     gap: 14px;
   }
 
-  .role-evolution-layout,
   .slide-01-grid,
+  .slide-01-stage,
   .rebrand-museum-layout,
-  .slide-08-grid {
+  .rebrand-content-stage,
+  .slide-08-grid,
+  .slide-08-stage {
     grid-template-columns: 1fr;
     gap: 1.5rem;
     height: auto;
