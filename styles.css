@@ -1007,13 +1007,13 @@ button {
   width: 100%;
   max-width: 100%;
   margin: 0;
-  gap: 1.8rem;
+  gap: clamp(1rem, 1.8vh, 1.6rem);
 }
 
 .mindset-question-block {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .mindset-sublabel {
@@ -1022,29 +1022,21 @@ button {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-muted-soft);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .mindset-sublabel--accent {
   color: var(--color-orange);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .mindset-quote {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3vw, 3.2rem);
+  font-size: clamp(1.4rem, 2.2vw, 2.4rem);
   font-weight: 500;
-  line-height: 1.12;
+  line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--color-muted);
-}
-
-.mindset-quote--hero {
-  font-size: clamp(2.4rem, 4.2vw, 4.8rem);
-  font-weight: 700;
-  color: var(--color-ink);
-  letter-spacing: -0.03em;
-  line-height: 1.05;
 }
 
 .mindset-divider-arrow {
@@ -1053,7 +1045,7 @@ button {
   justify-content: center;
   gap: 24px;
   width: 100%;
-  margin: 0.8rem 0;
+  margin: clamp(0.4rem, 0.8vh, 0.8rem) 0;
 }
 
 .mindset-arrow-line {
@@ -1064,22 +1056,66 @@ button {
 
 .mindset-shift-tag {
   font-family: var(--font-mono);
-  font-size: clamp(13px, 0.95vw, 15px);
+  font-size: clamp(12px, 0.85vw, 14px);
   letter-spacing: 0.18em;
   font-weight: 700;
   color: var(--color-orange);
   white-space: nowrap;
   text-align: center;
-  padding: 0 4px;
+  padding: 0 6px;
+}
+
+.mindset-questions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(0.75rem, 1.2vh, 1.1rem) clamp(1rem, 1.8vw, 1.8rem);
+  margin-top: 4px;
+}
+
+.mindset-q-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: clamp(0.85rem, 1.3vh, 1.2rem) clamp(1rem, 1.5vw, 1.4rem);
+  background: rgba(40, 9, 2, 0.02);
+  border: 1px solid var(--color-border-soft);
+  border-left: 3px solid var(--color-orange);
+  border-radius: var(--radius-cards);
+  transition: all var(--trans-fast);
+}
+
+.mindset-q-card:hover {
+  background: rgba(40, 9, 2, 0.045);
+  border-color: var(--color-ink);
+  border-left-color: var(--color-orange);
+  transform: translateX(4px);
+}
+
+.mindset-q-bullet {
+  font-family: var(--font-mono);
+  font-size: clamp(1.1rem, 1.3vw, 1.35rem);
+  font-weight: 700;
+  color: var(--color-orange);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.mindset-q-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.35vw, 1.45rem);
+  font-weight: 600;
+  color: var(--color-ink);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
 }
 
 .mindset-impact-note {
   font-family: var(--font-body);
-  font-size: clamp(1.2rem, 1.6vw, 1.85rem);
-  line-height: 1.35;
+  font-size: clamp(1.1rem, 1.4vw, 1.5rem);
+  line-height: 1.4;
   color: var(--color-muted);
-  max-width: 60ch;
-  margin-top: 0.8rem;
+  max-width: 65ch;
+  margin-top: clamp(0.4rem, 0.8vh, 0.8rem);
   padding-left: 14px;
   border-left: 2px solid var(--color-orange);
 }
@@ -1315,20 +1351,6 @@ button {
   text-align: right;
 }
 
-@media (max-width: 900px) {
-  .culture-pillars-grid {
-    grid-template-columns: 1fr;
-  }
-  .culture-bottom-row {
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-  }
-  .culture-closing-quote {
-    text-align: left;
-  }
-}
-
 /* ==========================================================================
    SLIDE 09 — END
    ========================================================================== */
@@ -1458,13 +1480,51 @@ button {
   text-transform: uppercase;
 }
 
-/* Responsive adjustments */
+/* ==========================================================================
+   RESPONSIVE DESIGN SYSTEM (Multi-Device Adaptation)
+   Full responsiveness across Ultra-wide, Desktop, Tablet, and Mobile screens
+   ========================================================================== */
+
+/* Touch-friendly interactions */
+button,
+.nav-arrow-btn,
+.hud-btn,
+.hud-timer,
+.overview-card {
+  touch-action: manipulation;
+}
+
+/* Subtle museum scrollbars when slides or overview scroll */
+.slide::-webkit-scrollbar,
+.overview-grid::-webkit-scrollbar {
+  width: 4px;
+}
+
+.slide::-webkit-scrollbar-track,
+.overview-grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.slide::-webkit-scrollbar-thumb,
+.overview-grid::-webkit-scrollbar-thumb {
+  background: var(--color-border-soft);
+  border-radius: 4px;
+}
+
+/* 1. Small Desktops & Landscape Tablets (<= 1100px) */
 @media (max-width: 1100px) {
+  :root {
+    --slide-padding-x: clamp(1.5rem, 3.5vw, 3rem);
+    --slide-padding-y: clamp(1rem, 2.5vh, 2rem);
+  }
+
   .work-range-grid,
   .lessons-reflection-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     height: auto;
+    gap: 14px;
   }
+
   .role-evolution-layout,
   .slide-01-grid,
   .rebrand-museum-layout,
@@ -1473,13 +1533,372 @@ button {
     gap: 1.5rem;
     height: auto;
   }
+
   .agentic-pipeline-track {
     flex-wrap: wrap;
+    gap: 10px;
   }
+
   .pipeline-connector {
     display: none;
   }
+
   .overview-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* 2. Portrait Tablets & Large Phones (<= 900px) */
+@media (max-width: 900px) {
+  :root {
+    --header-height: 54px;
+    --footer-height: 52px;
+    --slide-padding-x: clamp(1.2rem, 3.5vw, 2rem);
+    --text-display: clamp(2.1rem, 5.2vw, 3.2rem);
+  }
+
+  /* Enable smooth vertical scrolling inside slide if content exceeds screen */
+  .slide {
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+  }
+
+  .slide-inner {
+    height: auto;
+    min-height: 100%;
+    justify-content: flex-start;
+    padding-top: 0.8rem;
+    padding-bottom: 2.5rem;
+  }
+
+  /* HUD Header adjustments */
+  .hud-center {
+    display: none;
+  }
+
+  .hud-divider {
+    display: none;
+  }
+
+  .hud-tag {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+  }
+
+  /* Slide 06 Mindset */
+  .mindset-questions-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  /* Slide 07 Agentic Pipeline */
+  .agentic-pipeline-track {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 1.2rem 0;
+  }
+
+  .agentic-pipeline-step {
+    padding: 1.1rem 1.2rem;
+  }
+
+  /* Slide 08 Culture */
+  .culture-pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .culture-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 10px;
+    padding: 1rem 1.2rem;
+  }
+
+  .culture-closing-quote {
+    text-align: left;
+  }
+}
+
+/* 3. Mobile Phones (<= 640px) */
+@media (max-width: 640px) {
+  :root {
+    --header-height: 50px;
+    --footer-height: 50px;
+    --slide-padding-x: 1.1rem;
+    --slide-padding-y: 0.6rem;
+    --text-display: clamp(1.85rem, 6.2vw, 2.5rem);
+  }
+
+  /* HUD Header */
+  .hud-header {
+    padding: 0 1rem;
+  }
+
+  .hud-tag {
+    display: none;
+  }
+
+  .hud-timer {
+    display: none;
+  }
+
+  .hud-btn {
+    padding: 5px 12px;
+    font-size: 12px;
+  }
+
+  /* HUD Footer */
+  .hud-footer {
+    padding: 0 1rem;
+  }
+
+  .footer-meta {
+    display: none;
+  }
+
+  .footer-btn {
+    display: none;
+  }
+
+  .nav-hint {
+    display: none;
+  }
+
+  .footer-nav {
+    position: static;
+    transform: none;
+    margin: 0 auto;
+    padding: 4px 14px;
+  }
+
+  .nav-arrow-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Slide 01 Intro */
+  .intro-content-col {
+    gap: 1.2rem;
+  }
+
+  .intro-identity-tag {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .intro-plinth-card {
+    height: 220px;
+  }
+
+  /* Slide 02 Projects */
+  .work-range-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 1rem 0;
+  }
+
+  .work-project-card {
+    min-height: 170px;
+  }
+
+  .work-project-name {
+    font-size: clamp(2rem, 7vw, 2.5rem);
+  }
+
+  .work-specimen-wire {
+    height: 70px;
+  }
+
+  /* Slide 03 Evolution */
+  .role-evolution-layout {
+    gap: 1.2rem;
+    margin: 0.8rem 0;
+  }
+
+  .statement-item {
+    padding: 0.85rem 1rem;
+    gap: 10px;
+  }
+
+  /* Slide 04 Lessons */
+  .lessons-reflection-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 1rem 0;
+  }
+
+  .lesson-panel {
+    padding: 1.3rem 1.1rem;
+    min-height: 130px;
+  }
+
+  .lesson-title {
+    font-size: 1.75rem;
+    margin: 0.5rem 0;
+  }
+
+  /* Slide 05 Rebrand */
+  .rebrand-linear-flow {
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 1rem 0;
+  }
+
+  .flow-pill {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .flow-arrow {
+    font-size: 0.9rem;
+  }
+
+  .tagline-core {
+    font-size: clamp(1.4rem, 5vw, 1.8rem);
+  }
+
+  /* Slide 06 Mindset */
+  .mindset-typographic-stage {
+    gap: 1rem;
+  }
+
+  .mindset-quote {
+    font-size: clamp(1.2rem, 4.2vw, 1.6rem);
+  }
+
+  .mindset-divider-arrow {
+    gap: 12px;
+    margin: 0.4rem 0;
+  }
+
+  .mindset-q-card {
+    padding: 0.85rem 1rem;
+    gap: 10px;
+  }
+
+  .mindset-q-text {
+    font-size: 1.05rem;
+  }
+
+  /* Slide 07 Horizon */
+  .agentic-pipeline-track {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .agentic-pipeline-step {
+    padding: 0.9rem 1.1rem;
+  }
+
+  /* Slide 08 Culture */
+  .culture-pillar-card {
+    padding: 1.2rem 1rem;
+  }
+
+  .culture-bottom-row {
+    padding: 0.9rem 1rem;
+  }
+
+  .culture-shift-badge {
+    font-size: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* Slide 09 Outro */
+  .slide-08-grid {
+    gap: 1.5rem;
+  }
+
+  .closing-statement-box {
+    font-size: 1.2rem;
+  }
+
+  .closing-thank-you {
+    font-size: 2.2rem;
+  }
+
+  /* Overview Modal */
+  .overview-modal {
+    padding: 1.2rem 1rem;
+  }
+
+  .overview-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .overview-card {
+    height: auto;
+    min-height: 110px;
+    padding: 1rem;
+  }
+}
+
+/* 4. Narrow Mobile Phones (<= 380px) */
+@media (max-width: 380px) {
+  :root {
+    --slide-padding-x: 0.85rem;
+    --text-display: 1.7rem;
+  }
+
+  .hud-header {
+    padding: 0 0.75rem;
+  }
+
+  .hud-footer {
+    padding: 0 0.75rem;
+  }
+
+  .work-project-name {
+    font-size: 1.8rem;
+  }
+
+  .role-badge-solid {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+}
+
+/* 5. Short Viewports / Landscape Mobile (<= 700px height) */
+@media (max-height: 700px) {
+  :root {
+    --header-height: 48px;
+    --footer-height: 46px;
+    --slide-padding-y: 0.5rem;
+  }
+
+  .slide {
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+  }
+
+  .slide-inner {
+    height: auto;
+    min-height: 100%;
+    justify-content: flex-start;
+    padding-top: 0.6rem;
+    padding-bottom: 2rem;
+  }
+
+  .work-range-grid,
+  .lessons-reflection-grid {
+    height: auto;
+    min-height: auto;
+  }
+
+  .role-evolution-layout {
+    min-height: auto;
+  }
+
+  .intro-plinth-card {
+    height: 180px;
+  }
+}
+
