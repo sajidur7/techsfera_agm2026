@@ -908,7 +908,8 @@ button {
   grid-template-columns: 1.15fr 0.85fr;
   gap: 3rem;
   align-items: center;
-  height: 100%;
+  flex: 1;
+  min-height: 0;
 }
 
 .rebrand-linear-flow {
@@ -1333,6 +1334,7 @@ button {
    SLIDE 09 — END
    ========================================================================== */
 
+.slide-08-grid,
 .slide-08-stage {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
