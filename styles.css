@@ -398,7 +398,7 @@ button {
 .presentation-track {
   display: flex;
   height: 100vh;
-  width: 800vw;
+  width: 900vw;
   transform: translateX(0vw);
   transition: transform var(--trans-slide);
   will-change: transform;
@@ -1171,7 +1171,157 @@ button {
 }
 
 /* ==========================================================================
-   SLIDE 08 — END
+   SLIDE 08 — MORE OWNERSHIP. MORE INITIATIVE. (3 Culture Pillars & AI Shift)
+   ========================================================================== */
+
+.culture-content-layout {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.7rem, 1.4vh, 1.2rem);
+  flex: 1;
+  justify-content: center;
+  margin: 0.4rem 0;
+}
+
+.culture-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.culture-pillar-card {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-cards);
+  padding: clamp(1.2rem, 2vh, 1.8rem) clamp(1.2rem, 1.8vw, 1.6rem);
+  background: var(--color-card-surface);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+  transition: border-color var(--trans-fast), transform var(--trans-fast);
+}
+
+.culture-pillar-card:hover {
+  border-color: var(--color-ink);
+  transform: translateY(-2px);
+}
+
+.culture-pillar-card--accent {
+  background: rgba(248, 70, 32, 0.03);
+  border-color: rgba(248, 70, 32, 0.25);
+}
+
+.culture-pillar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.culture-pillar-num {
+  font-family: var(--font-mono);
+  font-size: var(--text-badge);
+  letter-spacing: 0.14em;
+  color: var(--color-orange);
+  font-weight: 600;
+}
+
+.culture-pillar-tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: 0.12em;
+  color: var(--color-muted-soft);
+  text-transform: uppercase;
+}
+
+.culture-pillar-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.6vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--color-ink);
+  line-height: 1.15;
+}
+
+.culture-pillar-desc {
+  font-family: var(--font-body);
+  font-size: clamp(0.92rem, 1.05vw, 1.12rem);
+  line-height: 1.4;
+  color: var(--color-muted);
+}
+
+.culture-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: clamp(0.8rem, 1.2vh, 1.1rem) clamp(1.2rem, 1.6vw, 1.8rem);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-cards);
+  background: var(--color-card-surface);
+}
+
+.culture-shift-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.culture-shift-label {
+  font-size: var(--text-micro);
+  color: var(--color-muted-soft);
+  margin-right: 4px;
+}
+
+.culture-shift-from {
+  color: var(--color-muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--color-orange);
+}
+
+.culture-shift-arrow {
+  color: var(--color-orange);
+  font-weight: 700;
+}
+
+.culture-shift-to {
+  color: var(--color-ink);
+  font-weight: 600;
+  background: rgba(248, 70, 32, 0.1);
+  padding: 3px 8px;
+  border-radius: var(--radius-badges);
+}
+
+.culture-closing-quote {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.15vw, 1.2rem);
+  font-weight: 500;
+  color: var(--color-ink);
+  line-height: 1.35;
+  text-align: right;
+}
+
+@media (max-width: 900px) {
+  .culture-pillars-grid {
+    grid-template-columns: 1fr;
+  }
+  .culture-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .culture-closing-quote {
+    text-align: left;
+  }
+}
+
+/* ==========================================================================
+   SLIDE 09 — END
    ========================================================================== */
 
 .slide-08-grid {
@@ -1249,7 +1399,7 @@ button {
 
 .overview-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
   overflow-y: auto;
 }

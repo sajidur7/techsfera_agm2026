@@ -7,7 +7,7 @@
 (function () {
   'use strict';
 
-  const TOTAL_SLIDES = 8;
+  const TOTAL_SLIDES = 9;
   let currentSlide = 0;
   let isOverviewOpen = false;
   let isWheelLocked = false;
