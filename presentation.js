@@ -7,7 +7,7 @@
 (function () {
   'use strict';
 
-  const TOTAL_SLIDES = 9;
+  const TOTAL_SLIDES = 8;
   let currentSlide = 0;
   let isOverviewOpen = false;
   let isWheelLocked = false;
@@ -25,48 +25,7 @@
   const overviewModal = document.getElementById('overviewModal');
   const overviewCloseBtn = document.getElementById('overviewCloseBtn');
   const overviewCards = document.querySelectorAll('.overview-card');
-  const timerBtn = document.getElementById('hudTimerBtn');
-  const timerDisplay = document.getElementById('hudTimerDisplay');
   const fullscreenBtn = document.getElementById('fullscreenBtn');
-
-  // Presenter Pacing Timer (Discreet 2-3 minute assistant)
-  let timerSeconds = 0;
-  let timerInterval = null;
-  let isTimerRunning = false;
-
-  function formatTime(totalSecs) {
-    const m = Math.floor(totalSecs / 60).toString().padStart(2, '0');
-    const s = (totalSecs % 60).toString().padStart(2, '0');
-    return `${m}:${s}`;
-  }
-
-  function updateTimerUI() {
-    if (timerDisplay) {
-      timerDisplay.textContent = `${formatTime(timerSeconds)} / 03:00`;
-    }
-  }
-
-  function startTimer() {
-    if (isTimerRunning) return;
-    isTimerRunning = true;
-    timerInterval = setInterval(() => {
-      timerSeconds++;
-      updateTimerUI();
-    }, 1000);
-  }
-
-  function pauseTimer() {
-    isTimerRunning = false;
-    clearInterval(timerInterval);
-  }
-
-  function toggleTimer() {
-    if (isTimerRunning) {
-      pauseTimer();
-    } else {
-      startTimer();
-    }
-  }
 
   // Slide Navigation Engine
   function updateSlide(newIndex) {
@@ -112,13 +71,8 @@
       }
     });
 
-    // Sync URL Hash (e.g. #01 or #10)
+    // Sync URL Hash (e.g. #01 or #08)
     window.location.hash = (currentSlide + 1).toString().padStart(2, '0');
-
-    // Auto-start timer on first advance
-    if (currentSlide > 0 && !isTimerRunning && timerSeconds === 0) {
-      startTimer();
-    }
   }
 
   function nextSlide() {
@@ -195,14 +149,6 @@
         e.preventDefault();
         toggleFullscreen();
         break;
-
-      case 't':
-      case 'T':
-      case 'p':
-      case 'P':
-        e.preventDefault();
-        toggleTimer();
-        break;
     }
   });
 
@@ -275,10 +221,6 @@
     overviewCloseBtn.addEventListener('click', () => toggleOverview(false));
   }
 
-  if (timerBtn) {
-    timerBtn.addEventListener('click', toggleTimer);
-  }
-
   if (fullscreenBtn) {
     fullscreenBtn.addEventListener('click', toggleFullscreen);
   }
@@ -307,7 +249,6 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     initFromHash();
-    updateTimerUI();
   });
 
   const overviewTrigger = document.getElementById('navOverviewTrigger');

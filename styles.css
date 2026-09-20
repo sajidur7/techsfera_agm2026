@@ -232,35 +232,6 @@ button {
   background: rgba(40, 9, 2, 0.05);
 }
 
-.hud-timer {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: clamp(14px, 1.05vw, 16.5px);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  padding: 7px 18px;
-  border-radius: var(--radius-buttons);
-  border: 1.5px solid var(--color-border-soft);
-  color: var(--color-ink);
-  cursor: pointer;
-  transition: var(--trans-fast);
-}
-
-.hud-timer:hover {
-  border-color: var(--color-ink);
-  color: var(--color-ink);
-  background: rgba(40, 9, 2, 0.04);
-}
-
-.hud-timer-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--color-orange);
-}
-
 /* Bottom Navigation Bar: "01 / 08 · ← → · Esc to overview" */
 .hud-footer {
   height: var(--footer-height);
@@ -283,9 +254,7 @@ button {
 }
 
 .footer-nav {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-left: auto;
   display: flex;
   align-items: center;
   gap: 14px;
@@ -400,7 +369,7 @@ button {
 .presentation-track {
   display: flex;
   height: 100vh;
-  width: 900vw;
+  width: 800vw;
   transform: translateX(0vw);
   transition: transform var(--trans-slide);
   will-change: transform;
@@ -1337,7 +1306,7 @@ button {
 .overview-modal {
   position: fixed;
   inset: 0;
-  background-color: rgba(244, 237, 212, 0.96);
+  background-color: var(--color-canvas-cream);
   z-index: 200;
   display: flex;
   flex-direction: column;
@@ -1446,7 +1415,6 @@ button {
 button,
 .nav-arrow-btn,
 .hud-btn,
-.hud-timer,
 .overview-card {
   touch-action: manipulation;
 }
@@ -1597,10 +1565,6 @@ button,
   }
 
   .hud-tag {
-    display: none;
-  }
-
-  .hud-timer {
     display: none;
   }
 
