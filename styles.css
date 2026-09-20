@@ -411,6 +411,7 @@ button {
   height: 100vh;
   flex-shrink: 0;
   position: relative;
+  overflow: hidden;
   padding: calc(var(--header-height) + 1.2rem) var(--slide-padding-x) calc(var(--footer-height) + 1.2rem);
   display: flex;
   flex-direction: column;
@@ -1000,10 +1001,10 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 56vh;
-  max-width: 1250px;
-  margin: auto 0;
-  gap: 1.4rem;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  gap: 1.8rem;
 }
 
 .mindset-question-block {
@@ -1046,22 +1047,29 @@ button {
 .mindset-divider-arrow {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin: 0.2rem 0;
+  justify-content: center;
+  gap: 24px;
+  width: 100vw;
+  margin-left: calc(-1 * (100vw - 100%) / 2);
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
 }
 
 .mindset-arrow-line {
   flex: 1;
   height: 1px;
-  background: var(--color-border-subtle);
+  background: var(--color-border-soft);
 }
 
 .mindset-shift-tag {
   font-family: var(--font-mono);
-  font-size: var(--text-caption);
-  letter-spacing: 0.16em;
-  font-weight: 600;
+  font-size: clamp(13px, 0.95vw, 15px);
+  letter-spacing: 0.18em;
+  font-weight: 700;
   color: var(--color-orange);
+  white-space: nowrap;
+  text-align: center;
+  padding: 0 4px;
 }
 
 .mindset-impact-note {
