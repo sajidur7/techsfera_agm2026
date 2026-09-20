@@ -7,7 +7,7 @@
 (function () {
   'use strict';
 
-  const TOTAL_SLIDES = 9;
+  const TOTAL_SLIDES = 10;
   let currentSlide = 0;
   let isOverviewOpen = false;
   let isWheelLocked = false;
@@ -112,8 +112,8 @@
       }
     });
 
-    // Sync URL Hash (e.g. #01)
-    window.location.hash = `0${currentSlide + 1}`;
+    // Sync URL Hash (e.g. #01 or #10)
+    window.location.hash = (currentSlide + 1).toString().padStart(2, '0');
 
     // Auto-start timer on first advance
     if (currentSlide > 0 && !isTimerRunning && timerSeconds === 0) {
@@ -165,7 +165,13 @@
       return;
     }
 
-    // Direct numeric keys 1 to 8
+    // Direct numeric keys 1 to 9, and 0 for slide 10
+    if (e.key === '0') {
+      e.preventDefault();
+      updateSlide(9);
+      return;
+    }
+
     const num = parseInt(e.key, 10);
     if (!isNaN(num) && num >= 1 && num <= TOTAL_SLIDES) {
       e.preventDefault();
