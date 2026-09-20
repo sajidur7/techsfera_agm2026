@@ -7,7 +7,7 @@
 (function () {
   'use strict';
 
-  const TOTAL_SLIDES = 10;
+  const TOTAL_SLIDES = 9;
   let currentSlide = 0;
   let isOverviewOpen = false;
   let isWheelLocked = false;
@@ -165,13 +165,7 @@
       return;
     }
 
-    // Direct numeric keys 1 to 9, and 0 for slide 10
-    if (e.key === '0') {
-      e.preventDefault();
-      updateSlide(9);
-      return;
-    }
-
+    // Direct numeric keys 1 to 9
     const num = parseInt(e.key, 10);
     if (!isNaN(num) && num >= 1 && num <= TOTAL_SLIDES) {
       e.preventDefault();
