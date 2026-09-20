@@ -429,8 +429,8 @@ button {
   flex-direction: column;
   justify-content: center;
   gap: clamp(1rem, 2.2vh, 2rem);
-  max-width: 1680px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
 }
 
 /* ==========================================================================
