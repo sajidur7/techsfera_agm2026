@@ -1,13 +1,13 @@
 /**
  * TechSfera AGM 2026 Presentation Engine — 099 Supply Museum Architecture
- * Product & Experience Designer: Shimul
+ * Product Designer: Shimul
  * Interactive horizontal presentation controller (No sound, pure keyboard/touch/click)
  */
 
 (function () {
   'use strict';
 
-  const TOTAL_SLIDES = 8;
+  const TOTAL_SLIDES = 9;
   let currentSlide = 0;
   let isOverviewOpen = false;
   let isWheelLocked = false;
